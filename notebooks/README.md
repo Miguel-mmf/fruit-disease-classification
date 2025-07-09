@@ -1,8 +1,8 @@
 # Model Card
 
-Credit card fraud happens when an individual takes or utilizes a credit card's details without the owner's consent. To fight and avert fraudulent transactions, credit card firms and financial organizations have established several measures. The majority of contemporary solutions utilize artificial intelligence (AI) and machine learning (ML). 
+Guava (Psidium guajava) is a key crop in South Asia, especially in Bangladesh. Rich in vitamin C and fiber, it supports regional economies and nutrition. Unfortunately, guava production is threatened by diseases that reduce yields. This dataset is designed to aid the development of machine learning models for early disease detection in guava fruit, helping to protect harvests and reduce economic losses.
 
-**The aim of this project is to replicate a service utilized by one of these organizations to forecast if a transaction is fraudulent.** The service takes in all the details of a credit card purchase made by a client and provides as output the likelihood of the purchase being fraudulent, along with a suggestion on whether it should be marked as fraud. The feedback from this service can help avoid charging customers for items they did not buy. 
+**The aim of this project is to develop a machine learning model for early disease detection in guava fruit, helping to protect harvests and reduce economic losses.** The model takes in images of guava fruits and classifies them into three categories: Anthracnose, Fruit Flies, or Healthy fruits. This classification can help farmers identify diseases early and take appropriate action to minimize crop losses. 
 
 <details>
 <summary>Model card explanation</summary>
@@ -12,7 +12,7 @@ Credit card fraud happens when an individual takes or utilizes a credit card's d
 
 ## Model Details
 
-[@Miguel-mmf](https://github.com/Miguel-mmf) created the model using a defined architecture shared by [ivanowitchm]([https://](https://github.com/ivanovitchm/PPGEEC2318/blob/main/lessons/week05/week05c.ipynb)). I was able to use PyTorch, Scikit-Learn and Python programming language to set up and train a logistic regression model. So far, no simple tuning of the hyperparameters has been carried out.
+[@Miguel-mmf](https://github.com/Miguel-mmf) created the model using PyTorch and a custom CNN architecture. The project utilizes Python programming language along with PyTorch, Scikit-Learn, and other machine learning libraries to develop an image classification model for guava disease detection. The model is designed to classify guava fruit images into three categories: Anthracnose, Fruit Flies, and Healthy fruits.
 
 ## Intended Use
 
@@ -21,53 +21,30 @@ This model is being used as a proof of concept for the first project in the Mach
 
 ## Training Data
 
-The dataset used in this project is based on the original csv was downloaded from: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud.
-After the EDA stage of the data pipeline, it was noted that the training data is imbalanced when considered the target variable and some features. The target variable can only have two values, 1 or 0, to indicate the occurrence of fraud or not, respectively.
+The dataset used in this project is based on the Guava Fruit Disease Dataset downloaded from: https://www.kaggle.com/datasets/asadullahgalib/guava-disease-dataset/data?select=GuavaDiseaseDataset.
 
-<details>
-<summary>Distribution per feature</summary>
-    <img src="images/eda_distribution_per_features.png">
-</details>
+Original dataset from Mendeley Data:
+> Amin, Md Al; Mahmud, Md Iqbal; Rahman, Asadullah Bin; Parvin, Mst Aktarina; Mamun, Md Abdulla Al (2024), "Guava Fruit Disease Dataset", Mendeley Data, V1, doi: 10.17632/bkdkc4n835.1
 
-<details>
-<summary>Pearson correlation with class</summary>
-    <img src="images/eda_pearson_correlation_heatmap.png">
-</details>
+### Dataset Summary
 
-<details>
-<summary>ROC curve for each feature</summary>
-    <img src="images/eda_roc_curve_features.png">
-</details>
+The dataset includes 473 annotated images of guava fruits, categorized into three classes. Images underwent preprocessing steps such as unsharp masking and CLAHE. The preprocessed images are augmented to increase to 3,784 image data. The three classes are:
+
+* **Anthracnose**: A fungal disease that causes dark spots on guava fruits
+* **Fruit Flies**: Pest infestation that damages the fruit
+* **Healthy fruits**: Normal, disease-free guava fruits
+
+Images were collected from guava orchards in Rajshahi and Pabna, Bangladesh, during the fruit-ripening season in July when disease vulnerability is highest. A plant pathologist verified the images for accuracy in classification. Each image was preprocessed to a consistent size of 512 x 512 pixels in RGB format, suitable for deep learning and image processing applications.
 
 
 ## Evaluating Data
 
-The dataset under study is split into Train and Test during the [Exploratory Data Analysis](eda.ipynb) stage. 80% of the clean data is used to Train and the remaining 20% to Test.
-
-<details>
-<summary>Loss curves</summary>
-    <img src="images/train_losses.png">
-</details>
-
-<details>
-<summary>Confusion matrix</summary>
-    <img src="images/train_confusion_matrix.png">
-</details>
-
-<details>
-<summary>ROC curve for validation data</summary>
-    <img src="images/train_val_roc_curve.png">
-</details>
-
-<details>
-<summary>TPR and FPR vc Tresholds</summary>
-    <img src="images/train_tpr_fpr_vs_thresholds.png">
-</details>
+The dataset under study is split into Train, Validation, and Test during the preprocessing stage. The data is divided into training (69.95%), validation (19.95%), and test (10.10%) sets to ensure proper model evaluation and avoid overfitting.
 
 
 ## Metrics
 
-In order to follow the performance of machine learning experiments, the project marked certains stage outputs of the data pipeline as metrics. The metrics adopted are: 
+In order to follow the performance of machine learning experiments, the project marked certain stage outputs of the data pipeline as metrics. The metrics adopted are: 
 * [**Accuracy**](https://scikit-learn.org/stable/modules/model_evaluation.html)
 <p align="center">
 $\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}$
@@ -102,12 +79,12 @@ The threshold value determines the cutoff for classifying predictions as positiv
 
 ## Ethical Considerations
 
-We may be tempted to claim that this dataset contains the only attributes capable of predicting someone's income. However, we know that is not true, and we will need to deal with the class imbalances somehow.
+When developing machine learning models for agricultural applications, it's important to consider that this dataset represents only one specific geographic region (Bangladesh) and specific conditions. The model's performance may vary when applied to different regions, climates, or guava varieties. We acknowledge that this is not a comprehensive representation of all possible guava disease scenarios.
 
 
 ## Caveats and Recommendations
 
-It should be noted that the model trained in this project was used only for validation. It is notary that some important issues related to dataset imbalances exist, and adequate techniques need to be adopted in order to balance it.
+It should be noted that the model trained in this project was used only for validation. It is important to note that some issues related to dataset imbalances exist, and adequate techniques need to be adopted in order to balance it. The model should be tested with additional data from different geographic regions and under various environmental conditions before deployment in real-world agricultural settings.
 
 
 
