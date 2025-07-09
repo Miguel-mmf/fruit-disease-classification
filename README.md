@@ -1,8 +1,8 @@
 # Project overview
 
-It is important that credit card companies are able to recognize fraudulent credit card transactions so that customers are not charged for items that they did not purchase.
+Guava (Psidium guajava) is a key crop in South Asia, especially in Bangladesh. Rich in vitamin C and fiber, it supports regional economies and nutrition. Unfortunately, guava production is threatened by diseases that reduce yields. This dataset is designed to aid the development of machine learning models for early disease detection in guava fruit, helping to protect harvests and reduce economic losses.
 
-**The aim of this project is to replicate a service utilized by one of these organizations to forecast if a transaction is fraudulent.** The service takes in all the details of a credit card purchase made by a client and provides as output the likelihood of the purchase being fraudulent, along with a suggestion on whether it should be marked as fraud. The feedback from this service can help avoid charging customers for items they did not buy. 
+**The aim of this project is to develop a machine learning model for early disease detection in guava fruit, helping to protect harvests and reduce economic losses.** 
 
 ## Environment setup
 
@@ -18,36 +18,29 @@ To configure the virtual environment, follow the steps below:
 - UV
 
 
-
+****
 ## Data
 
-The dataset used in this project is based on the original csv was downloaded from: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud.
-After the EDA stage of the data pipeline, it was noted that the training data is imbalanced when considered the target variable and some features. The target variable can only have two values, 1 or 0, to indicate the occurrence of fraud or not, respectively.
+The dataset used in this project is based on the original csv was downloaded from: https://www.kaggle.com/datasets/asadullahgalib/guava-disease-dataset/data?select=GuavaDiseaseDataset.
 
+Actual dataset from Mendeley Data:
+> Amin, Md Al; Mahmud, Md Iqbal; Rahman, Asadullah Bin; Parvin, Mst Aktarina; Mamun, Md Abdulla Al (2024), “Guava Fruit Disease Dataset”, Mendeley Data, V1, doi: 10.17632/bkdkc4n835.1
 
-## Exploratory data analysis
+### Dataset Summary
 
-<details open>
-<summary>Distribution per feature</summary>
-    <img src="notebooks/images/eda_distribution_per_features.png">
-</details>
+The dataset used for this project includes 473 annotated images of guava fruits, categorized into three classes. Images underwent preprocessing steps such as unsharp masking and CLAHE. The preprocessed images are augmented to increase in number to 3,784 image data. The three classes are:
 
-<details>
-<summary>Pearson correlation with class</summary>
-    <img src="notebooks/images/eda_pearson_correlation_heatmap.png">
-</details>
+* Anthracnose
+* Fruit Flies
+* Healthy fruits
 
-<details>
-<summary>ROC curve for each feature</summary>
-    <img src="notebooks/images/eda_roc_curve_features.png">
-</details>
+Images were collected from guava orchards in Rajshahi and Pabna, Bangladesh, during the fruit-ripening season in July when disease vulnerability is highest. A plant pathologist verified the images for accuracy in classification. Each image was preprocessed to a consistent size of 512 x 512 pixels in RGB format, suitable for deep learning and image processing applications.
+
 
 ## Materials
 
-* [Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
-* [credit_card_fraud_predictor](https://github.com/karinait/credit_card_fraud_predictor?tab=readme-ov-file)
-* [PEEC2318 Machine Learning](https://github.com/ivanovitchm/PPGEEC2318)
-* [mlops_nd_c3](https://github.com/ivanovitchm/mlops_nd_c3/tree/main)
+* [Guava Fruit Disease Dataset](https://www.kaggle.com/datasets/asadullahgalib/guava-disease-dataset/data?select=GuavaDiseaseDataset)
+* [Guava Disease Classification Using CNN](https://www.kaggle.com/code/sandeepnayak144/guava-disease-classification-using-cnn)
 
 ___
 **Feel free to contribute and explore the project!**
